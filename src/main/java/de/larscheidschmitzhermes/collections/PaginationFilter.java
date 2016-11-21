@@ -70,10 +70,10 @@ public class PaginationFilter implements ContainerResponseFilter {
     }
 
     private <T> Collection<T> getSublistOfCollection(Collection<T> collection, Integer offset, Integer limit) {
-        offset = calculateCorrectOffset(collection,offset);
-        limit = calculateCorrectLimit(collection, offset, limit);
+        Integer correctOffset = calculateCorrectOffset(collection,offset);
+        Integer correctLimit = calculateCorrectLimit(collection, correctOffset, limit);
         List<T> list = new ArrayList<T>(collection);
-        return list.subList(offset, limit);
+        return list.subList(correctOffset, correctLimit);
     }
 
     private Integer calculateCorrectLimit(Collection collection, Integer offset, Integer limit) {
