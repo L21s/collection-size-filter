@@ -5,8 +5,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import javax.ws.rs.GET;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.core.MultivaluedHashMap;
@@ -39,7 +41,7 @@ public class CollectionSizeFilterSpec {
     public static void setUp() {
         COLLECTION_SIZE_42 = collectionWithSize42();
         ANNOTATION_WITH_CUSTOMER_HEADER_NAME = new Annotation[]{annotationWithCustomHeaderName()};
-        DEFAULT_ANNOTATION = new Annotation[]{defaultAnnotation()};
+        DEFAULT_ANNOTATION = new Annotation[]{defaultAnnotation(), Mockito.mock(GET.class)};
     }
 
     private static java.util.Collection collectionWithSize42() {
