@@ -4,6 +4,7 @@ import de.larscheidschmitzhermes.collections.interfaces.CollectionSize;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.Priority;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
@@ -13,6 +14,7 @@ import java.lang.annotation.Annotation;
 import java.util.Arrays;
 
 @Provider
+@Priority(1000)
 @CollectionSize
 public class CollectionSizeFilter implements ContainerResponseFilter {
 
