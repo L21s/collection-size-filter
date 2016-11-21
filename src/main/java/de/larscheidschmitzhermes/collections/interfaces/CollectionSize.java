@@ -13,7 +13,7 @@ import javax.ws.rs.NameBinding;
 @NameBinding
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Collection {
+public @interface CollectionSize {
     public static String DEFAULT_HEADER = "result-count";
 
     String headerName() default DEFAULT_HEADER;

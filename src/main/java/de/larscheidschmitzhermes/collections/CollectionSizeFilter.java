@@ -1,6 +1,6 @@
 package de.larscheidschmitzhermes.collections;
 
-import de.larscheidschmitzhermes.collections.interfaces.Collection;
+import de.larscheidschmitzhermes.collections.interfaces.CollectionSize;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,10 +13,10 @@ import java.lang.annotation.Annotation;
 import java.util.Arrays;
 
 @Provider
-@Collection
-public class CollectionFilter implements ContainerResponseFilter {
+@CollectionSize
+public class CollectionSizeFilter implements ContainerResponseFilter {
 
-    private Logger logger = LoggerFactory.getLogger(CollectionFilter.class);
+    private Logger logger = LoggerFactory.getLogger(CollectionSizeFilter.class);
 
     @Override
     public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
@@ -29,13 +29,13 @@ public class CollectionFilter implements ContainerResponseFilter {
 
     private String extractHeaderNameFromAnnotation(Annotation[] annotations) {
         for (Annotation annotation : annotations) {
-            if (annotation instanceof Collection) {
-                return ((Collection) annotation).headerName();
+            if (annotation instanceof CollectionSize) {
+                return ((CollectionSize) annotation).headerName();
             }
         }
         //this point is technically unreachable (otherwise there is a problem with jax-rs)
         //still, this exception is needed for the compiler to be happy
-        throw new IllegalStateException("Missing required @Collection annotation - this should not be possible.");
+        throw new IllegalStateException("Missing required @CollectionSize annotation - this should not be possible.");
     }
 
     private Integer extractSizeFromEntity(Object entity) {
