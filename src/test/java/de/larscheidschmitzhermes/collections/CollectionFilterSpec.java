@@ -39,7 +39,7 @@ public class CollectionFilterSpec {
     private static Annotation[] DEFAULT_ANNOTATION;
 
     @BeforeClass
-    public static void setup() {
+    public static void setUp() {
         COLLECTION_SIZE_42 = collectionWithSize42();
         ANNOTATION_WITH_CUSTOMER_HEADER_NAME = new Annotation[]{annotationWithCustomHeaderName()};
         DEFAULT_ANNOTATION = new Annotation[]{defaultAnnotation()};
