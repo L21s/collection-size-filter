@@ -35,9 +35,10 @@ public class PaginationFilter implements ContainerResponseFilter {
         }
         Integer limit = extractLimit(requestContext);
         Integer offset = extractOffset(requestContext);
-        Collection sublist = getSublistOfCollection((Collection) responseContext.getEntity(), offset, limit);
+        Collection originalCollection = (Collection) responseContext.getEntity();
+        Collection sublist = getSublistOfCollection(originalCollection, offset, limit);
         responseContext.setEntity(sublist);
-        setResponseHeaders(responseContext, limit, offset, ((Collection) responseContext.getEntity()).size());
+        setResponseHeaders(responseContext, limit, offset, originalCollection.size());
     }
 
     private Integer extractLimit(ContainerRequestContext requestContext) {
