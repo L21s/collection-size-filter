@@ -41,7 +41,7 @@ public class CollectionSizeFilterSpec {
     public static void setUp() {
         COLLECTION_SIZE_42 = collectionWithSize42();
         ANNOTATION_WITH_CUSTOMER_HEADER_NAME = new Annotation[]{annotationWithCustomHeaderName()};
-        DEFAULT_ANNOTATION = new Annotation[]{defaultAnnotation(), Mockito.mock(GET.class)};
+        DEFAULT_ANNOTATION = new Annotation[]{Mockito.mock(GET.class), defaultAnnotation()};
     }
 
     private static java.util.Collection collectionWithSize42() {
