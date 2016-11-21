@@ -28,7 +28,7 @@ result-count: 3
 The `result-count` header is automatically added to your Response. You can customize the header name by specifiying it in the annotation like so: `@Collection(headerName="my-fancy-header-name")`
 
 ## Hints
-  - All the functionality is only applied if your Response´s status code is `200`
+  - The functionality is generally applied for every status code and request type. When the returned entity is no collection, the filter will set `result-count: 1`.
   - If you don't use class path scanning (hint: [you shouldn't]), you need to list `de.larscheidschmitzhermes.collections.CollectionFilter` in your `javax.ws.rs.core.Application`. (Or whereever else you register your resource classes)
 
 License
