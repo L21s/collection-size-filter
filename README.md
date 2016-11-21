@@ -30,7 +30,7 @@ The `result-count` header is automatically added to your Response. You can custo
 
 ## Hints
   - The functionality is generally applied for every status code and request type. When the returned entity is no collection, the filter will set `result-count: 1`.
-  - If you don't use class path scanning (hint: [you shouldn't]), you need to list `de.larscheidschmitzhermes.collections.CollectionFilter` in your `javax.ws.rs.core.Application`. (Or whereever else you register your resource classes)
+  - If you don't use class path scanning (hint: [you shouldn't]), you need to list `de.larscheidschmitzhermes.collections.CollectionSizeFilter` in your `javax.ws.rs.core.Application`. (Or whereever else you register your resource classes)
 
 License
 ----

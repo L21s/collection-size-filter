@@ -1,6 +1,6 @@
 package de.larscheidschmitzhermes.collections;
 
-import de.larscheidschmitzhermes.collections.interfaces.Collection;
+import de.larscheidschmitzhermes.collections.interfaces.CollectionSize;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,13 +22,13 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CollectionFilterSpec {
+public class CollectionSizeFilterSpec {
     @Mock
     private ContainerRequestContext requestCtx;
     @Mock
     private ContainerResponseContext responseCtx;
 
-    private CollectionFilter filter = new CollectionFilter();
+    private CollectionSizeFilter filter = new CollectionSizeFilter();
 
     private static String CUSTOM_HEADER_NAME = "custom-header";
     private static java.util.Collection<Object> COLLECTION_SIZE_42;
@@ -48,15 +48,15 @@ public class CollectionFilterSpec {
         return collection;
     }
 
-    private static Collection annotationWithCustomHeaderName() {
-        Collection annotation = mock(Collection.class);
+    private static CollectionSize annotationWithCustomHeaderName() {
+        CollectionSize annotation = mock(CollectionSize.class);
         when(annotation.headerName()).thenReturn(CUSTOM_HEADER_NAME);
         return annotation;
     }
 
-    private static Collection defaultAnnotation(){
-        Collection annotation = mock(Collection.class);
-        when(annotation.headerName()).thenReturn(Collection.DEFAULT_HEADER);
+    private static CollectionSize defaultAnnotation(){
+        CollectionSize annotation = mock(CollectionSize.class);
+        when(annotation.headerName()).thenReturn(CollectionSize.DEFAULT_HEADER);
         return annotation;
     }
 
@@ -69,7 +69,7 @@ public class CollectionFilterSpec {
 
         filter.filter(requestCtx, responseCtx);
 
-        assertThat(headers.get(Collection.DEFAULT_HEADER), is(Arrays.asList(42)));
+        assertThat(headers.get(CollectionSize.DEFAULT_HEADER), is(Arrays.asList(42)));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class CollectionFilterSpec {
 
         filter.filter(requestCtx, responseCtx);
 
-        assertThat(headers.get(Collection.DEFAULT_HEADER), is(nullValue()));
+        assertThat(headers.get(CollectionSize.DEFAULT_HEADER), is(nullValue()));
         assertThat(headers.get(CUSTOM_HEADER_NAME), is(Arrays.asList(42)));
     }
 
@@ -94,7 +94,7 @@ public class CollectionFilterSpec {
 
         filter.filter(requestCtx,responseCtx);
 
-        assertThat(headers.get(Collection.DEFAULT_HEADER), is(nullValue()));
+        assertThat(headers.get(CollectionSize.DEFAULT_HEADER), is(nullValue()));
     }
 
     @Test
@@ -106,7 +106,7 @@ public class CollectionFilterSpec {
 
         filter.filter(requestCtx,responseCtx);
 
-        assertThat(headers.get(Collection.DEFAULT_HEADER),is(Arrays.asList(1)));
+        assertThat(headers.get(CollectionSize.DEFAULT_HEADER),is(Arrays.asList(1)));
     }
 
     @Test(expected = IllegalStateException.class)
