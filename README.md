@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/larscheid-schmitzhermes/collection-size-filter.svg?branch=master)](https://travis-ci.org/larscheid-schmitzhermes/collection-size-filter)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1543b17855c146ad9d6881585d88220a)](https://www.codacy.com/app/tobilarscheid/collection-size-filter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=larscheid-schmitzhermes/collection-size-filter&amp;utm_campaign=Badge_Grade)
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/1543b17855c146ad9d6881585d88220a)](https://www.codacy.com/app/tobilarscheid/collection-size-filter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=larscheid-schmitzhermes/collection-size-filter&amp;utm_campaign=Badge_Coverage)
+[![codecov](https://codecov.io/gh/larscheid-schmitzhermes/collection-size-filter/branch/master/graph/badge.svg)](https://codecov.io/gh/larscheid-schmitzhermes/collection-size-filter)
+
 # JAX-RS Collection Size Filter
 
 Just a very small helper for making your RESTful APIs even more beautiful: When returning collections, add a header stating the number of elements. Clients can then for example HEAD the resource and simply get a count.
