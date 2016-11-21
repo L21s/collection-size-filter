@@ -46,7 +46,7 @@ public class CollectionFilterSpec {
     }
 
     private static java.util.Collection collectionWithSize42() {
-        java.util.Collection<Object> collection = Mockito.mock(java.util.Collection.class);
+        java.util.Collection<Object> collection = mock(java.util.Collection.class);
         when(collection.size()).thenReturn(42);
         return collection;
     }
