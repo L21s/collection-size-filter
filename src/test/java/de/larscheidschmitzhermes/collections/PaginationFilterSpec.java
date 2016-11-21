@@ -40,6 +40,20 @@ public class PaginationFilterSpec {
     }
 
     @Test
+    public void shouldDoNothingWithoutParams() throws IOException{
+        MultivaluedMap<String, Object> headers = new MultivaluedHashMap<>();
+        when(responseCtx.getHeaders()).thenReturn(headers);
+        when(responseCtx.getEntity()).thenReturn(COLLECTION);
+
+        filter.filter(requestCtx,responseCtx);
+
+        verify(responseCtx, times(1)).setEntity(COLLECTION);
+        assertThat(responseCtx.getHeaders().get("limit"), is(nullValue()));
+        assertThat(responseCtx.getHeaders().get("offset"), is(nullValue()));
+        assertThat(responseCtx.getHeaders().get("total-result-count"), is(Arrays.asList(6)));
+    }
+
+    @Test
     public void shouldLimit() throws IOException {
         MultivaluedMap<String, Object> headers = new MultivaluedHashMap<>();
         when(responseCtx.getHeaders()).thenReturn(headers);
