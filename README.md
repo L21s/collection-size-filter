@@ -42,6 +42,7 @@ For automatic pagination, annotate your service method with `@Paginated`.
 @Path("/entities")
 @Paginated
 @CollectionSize
+@GET
 public Response getMyEntities(){
     Collection<String> entities = Arrays.asList("A", "B", "C", "D", "E");
     return Response.ok(entities).build();
