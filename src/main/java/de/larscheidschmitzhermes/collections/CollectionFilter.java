@@ -33,6 +33,8 @@ public class CollectionFilter implements ContainerResponseFilter {
                 return ((Collection) annotation).headerName();
             }
         }
+        //this point is technically unreachable (otherwise there is a problem with jax-rs)
+        //still, this exception is needed for the compiler to be happy
         throw new IllegalStateException("Missing required @Collection annotation - this should not be possible.");
     }
 

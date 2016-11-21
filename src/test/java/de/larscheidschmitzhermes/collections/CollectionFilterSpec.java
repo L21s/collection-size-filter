@@ -17,6 +17,7 @@ import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.*;
@@ -112,4 +113,11 @@ public class CollectionFilterSpec {
         assertThat(headers.get(Collection.DEFAULT_HEADER),is(Arrays.asList(1)));
     }
 
+    @Test(expected = IllegalStateException.class)
+    public void shouldDealWithMissingAnnotation() throws IOException{
+        when(responseCtx.getEntityAnnotations()).thenReturn(new Annotation[0]);
+        when(responseCtx.getEntity()).thenReturn(new Object());
+
+        filter.filter(requestCtx, responseCtx);
+    }
 }
